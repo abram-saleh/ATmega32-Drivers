@@ -18,7 +18,7 @@ typedef enum
 	ERR_PORT_DIR,
 	ERR_PIN_DIR,
 	ERR_PORT_VAL,
-	ERR_PIN_VAL,
+	ERR_PIN_VAL
 }ERROR;
 
 /**********************************************************************************/
