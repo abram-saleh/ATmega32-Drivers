@@ -13,6 +13,7 @@
 /* Error Codes */
 typedef enum
 {
+	NO_ERROR,
 	ERR_PORT_INDEX,
 	ERR_PIN_INDEX,
 	ERR_PORT_DIR,
@@ -33,11 +34,11 @@ extern u8 DIO_u8SetPortDir(u8 u8PortIndexCpy, u8 u8PortDirCpy)
 	{
 		switch(u8PortIndexCpy)
 		{
-		case PORTA: DDRA_REG = u8PortDirCpy; break;
-		case PORTB: DDRB_REG = u8PortDirCpy; break;
-		case PORTC: DDRC_REG = u8PortDirCpy; break;
-		case PORTD: DDRD_REG = u8PortDirCpy; break;
-		default:	return ERR_PORT_INDEX;	 break;	// Invalid Port Index
+			case PORTA: DDRA_REG = u8PortDirCpy; return NO_ERROR; break;
+			case PORTB: DDRB_REG = u8PortDirCpy; return NO_ERROR; break;
+			case PORTC: DDRC_REG = u8PortDirCpy; return NO_ERROR; break;
+			case PORTD: DDRD_REG = u8PortDirCpy; return NO_ERROR; break;
+			default:	return ERR_PORT_INDEX; break;	// Invalid Port Index
 		}
 	}
 	else
@@ -59,11 +60,11 @@ extern u8 DIO_u8SetPortVal(u8 u8PortIndexCpy, u8 u8PortValCpy)
 	{
 		switch(u8PortIndexCpy)
 		{
-		case PORTA: PORTA_REG = u8PortValCpy; break;
-		case PORTB: PORTB_REG = u8PortValCpy; break;
-		case PORTC: PORTC_REG = u8PortValCpy; break;
-		case PORTD: PORTD_REG = u8PortValCpy; break;
-		default:	return ERR_PORT_INDEX;	  break;	// Invalid Port Index
+			case PORTA: PORTA_REG = u8PortValCpy; return NO_ERROR; break;
+			case PORTB: PORTB_REG = u8PortValCpy; return NO_ERROR; break;
+			case PORTC: PORTC_REG = u8PortValCpy; return NO_ERROR; break;
+			case PORTD: PORTD_REG = u8PortValCpy; return NO_ERROR; break;
+			default: return ERR_PORT_INDEX;	break;	// Invalid Port Index
 		}
 	}
 	else
@@ -87,22 +88,22 @@ extern u8 DIO_u8SetPinDir(u8 u8PortIndexCpy, u8 u8PinIndexCpy, u8 u8PinDirCpy)
 		{
 			switch(u8PortIndexCpy)
 			{
-			case PORTA: CLR_BIT(DDRA_REG, u8PinIndexCpy); break;
-			case PORTB: CLR_BIT(DDRB_REG, u8PinIndexCpy); break;
-			case PORTC: CLR_BIT(DDRC_REG, u8PinIndexCpy); break;
-			case PORTD: CLR_BIT(DDRD_REG, u8PinIndexCpy); break;
-			default:	return ERR_PORT_INDEX;	  		  break;	// Invalid Port Index
+				case PORTA: CLR_BIT(DDRA_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTB: CLR_BIT(DDRB_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTC: CLR_BIT(DDRC_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTD: CLR_BIT(DDRD_REG, u8PinIndexCpy); return NO_ERROR; break;
+				default: return ERR_PORT_INDEX;	break;	// Invalid Port Index
 			}
 		}
 		else if(u8PinDirCpy == HIGH)
 		{
 			switch(u8PortIndexCpy)
 			{
-			case PORTA: SET_BIT(DDRA_REG, u8PinIndexCpy); break;
-			case PORTB: SET_BIT(DDRB_REG, u8PinIndexCpy); break;
-			case PORTC: SET_BIT(DDRC_REG, u8PinIndexCpy); break;
-			case PORTD: SET_BIT(DDRD_REG, u8PinIndexCpy); break;
-			default:	return ERR_PORT_INDEX;	  		  break;	// Invalid Port Index
+				case PORTA: SET_BIT(DDRA_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTB: SET_BIT(DDRB_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTC: SET_BIT(DDRC_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTD: SET_BIT(DDRD_REG, u8PinIndexCpy); return NO_ERROR; break;
+				default: return ERR_PORT_INDEX; break;	// Invalid Port Index
 			}
 		}
 		else
@@ -132,22 +133,22 @@ extern u8 DIO_u8SetPinVal(u8 u8PortIndexCpy, u8 u8PinIndexCpy, u8 u8PinValCpy)
 		{
 			switch(u8PortIndexCpy)
 			{
-			case PORTA: CLR_BIT(PORTA_REG, u8PinIndexCpy); break;
-			case PORTB: CLR_BIT(PORTB_REG, u8PinIndexCpy); break;
-			case PORTC: CLR_BIT(PORTC_REG, u8PinIndexCpy); break;
-			case PORTD: CLR_BIT(PORTD_REG, u8PinIndexCpy); break;
-			default:	return ERR_PORT_INDEX;	  		   break;	// Invalid Port Index
+				case PORTA: CLR_BIT(PORTA_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTB: CLR_BIT(PORTB_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTC: CLR_BIT(PORTC_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTD: CLR_BIT(PORTD_REG, u8PinIndexCpy); return NO_ERROR; break;
+				default: return ERR_PORT_INDEX; break;	// Invalid Port Index
 			}
 		}
 		else if(u8PinValCpy == HIGH)
 		{
 			switch(u8PortIndexCpy)
 			{
-			case PORTA: SET_BIT(PORTA_REG, u8PinIndexCpy); break;
-			case PORTB: SET_BIT(PORTB_REG, u8PinIndexCpy); break;
-			case PORTC: SET_BIT(PORTC_REG, u8PinIndexCpy); break;
-			case PORTD: SET_BIT(PORTD_REG, u8PinIndexCpy); break;
-			default:	return ERR_PORT_INDEX;	  		   break;	// Invalid Port Index
+				case PORTA: SET_BIT(PORTA_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTB: SET_BIT(PORTB_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTC: SET_BIT(PORTC_REG, u8PinIndexCpy); return NO_ERROR; break;
+				case PORTD: SET_BIT(PORTD_REG, u8PinIndexCpy); return NO_ERROR; break;
+				default: return ERR_PORT_INDEX; break;	// Invalid Port Index
 			}
 		}
 		else
@@ -175,11 +176,11 @@ extern u8 DIO_u8GetPinVal(u8 u8PortIndexCpy, u8 u8PinIndexCpy, u8* pu8PinValCpy)
 	{
 		switch(u8PortIndexCpy)
 		{
-		case PORTA: *pu8PinValCpy = GET_BIT(PINA_REG, u8PinIndexCpy); break;
-		case PORTB: *pu8PinValCpy = GET_BIT(PINB_REG, u8PinIndexCpy); break;
-		case PORTC: *pu8PinValCpy = GET_BIT(PINC_REG, u8PinIndexCpy); break;
-		case PORTD: *pu8PinValCpy = GET_BIT(PIND_REG, u8PinIndexCpy); break;
-		default:	return ERR_PORT_INDEX;	  		   				  break;	// Invalid Port Index
+			case PORTA: *pu8PinValCpy = GET_BIT(PINA_REG, u8PinIndexCpy); return NO_ERROR; break;
+			case PORTB: *pu8PinValCpy = GET_BIT(PINB_REG, u8PinIndexCpy); return NO_ERROR; break;
+			case PORTC: *pu8PinValCpy = GET_BIT(PINC_REG, u8PinIndexCpy); return NO_ERROR; break;
+			case PORTD: *pu8PinValCpy = GET_BIT(PIND_REG, u8PinIndexCpy); return NO_ERROR; break;
+			default: return ERR_PORT_INDEX; break;	// Invalid Port Index
 		}
 	}
 	else
