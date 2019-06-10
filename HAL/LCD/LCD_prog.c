@@ -17,6 +17,7 @@
 /* Global Variables */
 u8 u8DataLengthGbl = LCD_DL;	// LCD Interface Data Length
 
+/* Error Codes */
 typedef enum
 {
 	NO_ERROR,
@@ -333,7 +334,7 @@ extern u8 LCD_u8DispCtrl(u8 u8DispStateCpy, u8 u8CursorStateCpy, u8 u8BlinkState
 /**********************************************************************************/
 extern void LCD_vidWriteData4Bit(u8 u8DataCpy)
 {
-	/* Local Variables */
+	/* Declare a local variable for the loop iterations */
 	u8 u8IterationLoc;
 
 	/* Declare an array to store the 8 bits of data */
@@ -376,7 +377,7 @@ extern void LCD_vidWriteData4Bit(u8 u8DataCpy)
 /**********************************************************************************/
 extern void LCD_vidWriteData8Bit(u8 u8DataCpy)
 {
-	/* Local Variables */
+	/* Declare a local variable for the loop iterations */
 	u8 u8IterationLoc;
 
 	/* Declare an array to store the 8 bits of data */
